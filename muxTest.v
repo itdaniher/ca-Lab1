@@ -8,11 +8,11 @@ module main;
 
 	initial begin
 
-     if (! $value$plusargs("in=%b", in)) begin
+     if (! $value$plusargs("in=%h", in)) begin
         $display("done goofed - need 'in'");
         $finish;
      end
-     if (! $value$plusargs("ctrl=%b", ctrl)) begin
+     if (! $value$plusargs("ctrl=%d", ctrl)) begin
         $display("done goofed - need 'ctrl'");
         $finish;
      end
