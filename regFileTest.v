@@ -9,20 +9,20 @@ module main;
 
 	initial begin
 
-     if (! $value$plusargs("ReadRegister1=%b", ReadRegister1)) begin
+     if (! $value$plusargs("ReadRegister1=%d", ReadRegister1)) begin
         $display("done goofed - need 'ReadRegister1'");
         $finish;
      end
 
-     if (! $value$plusargs("ReadRegister2=%b", ReadRegister2)) begin
+     if (! $value$plusargs("ReadRegister2=%d", ReadRegister2)) begin
         $display("done goofed - need 'ReadRegister2'");
         $finish;
      end
 
 		#1; 
 
-		$display("ReadData1 %b", ReadData1);
-		$display("ReadData2 %b", ReadData2);
+		$display("ReadData1 %d", ReadData1);
+		$display("ReadData2 %d", ReadData2);
 
 		$finish;
 
