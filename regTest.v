@@ -12,8 +12,8 @@ module main;
 
 	always @ (negedge clk)
 	begin
-		$monitor("in %b - in %b", in, out);
 		in = ~in;
+		$monitor("in %b - out %b", in, out);
 	end
 
 	always
@@ -23,7 +23,7 @@ module main;
 	end
 
 	initial begin
-		#1000 $finish;
+		#10 $finish;
 	end
 
 endmodule
