@@ -61,11 +61,6 @@ module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11
 	input [4:0] CTRL;
 	input [31:0] in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13, in14, in15, in16, in17, in18, in19, in20, in21, in22, in23, in24, in25, in26, in27, in28, in29, in30, in31;
 	
-	wire out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
-	wire out10, out11, out12, out13, out14, out15, out16, out17, out18, out19;
-	wire out20, out21, out22, out23, out24, out25, out26, out27, out28, out29;
-	wire out30, out31;
-	 
 	MUX mux0 (CTRL, in0, out[0]);
 	MUX mux1 (CTRL, in1, out[1]);
 	MUX mux2 (CTRL, in2, out[2]);
