@@ -63,8 +63,7 @@ module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11
 
 	reg out;
 
-	always @ (CTRL)
-	begin
+	always @ (CTRL) begin
 		case (CTRL)
 			00 : out=in0;
 			01 : out=in1;
