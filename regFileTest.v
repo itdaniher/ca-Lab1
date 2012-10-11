@@ -1,31 +1,40 @@
 module main;
 
 	reg [4:0] ReadRegister1, ReadRegister2, WriteRegister;
-    wire RegWrite, clk;
-   	output [31:0] ReadData1, ReadData2;
-	wire [31:0] WriteData;
+	reg [31:0] WriteData;
+	wire [31:0] ReadData1, ReadData2;
+	reg RegWrite;
+	reg clk;
 
 	regfile dut (ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, WriteRegister, RegWrite, clk);
+	initial begin
+		clk = 0;
+		RegWrite = 1'b1;
+		ReadRegister1 = 0;
+		ReadRegister2 = 0;
+		WriteRegister = 1;
+		WriteData = 32'h55555555;
+	end
+
+	always @ (negedge clk)
+	begin
+		WriteData = ~WriteData;
+		$display("reg1 %d - %b", ReadRegister1, ReadData1);
+		$display("reg2 %d - %b", ReadRegister2, ReadData2);
+		$display("write %d - %b", WriteRegister, WriteData);
+		ReadRegister1 = ReadRegister1 + 1;
+		ReadRegister2 = ReadRegister2 + 1;
+		WriteRegister = WriteRegister + 1;
+	end
+
+	always
+	begin
+		#1 clk = 0;
+		#1 clk = 1;
+	end
 
 	initial begin
-
-     if (! $value$plusargs("ReadRegister1=%d", ReadRegister1)) begin
-        $display("done goofed - need 'ReadRegister1'");
-        $finish;
-     end
-
-     if (! $value$plusargs("ReadRegister2=%d", ReadRegister2)) begin
-        $display("done goofed - need 'ReadRegister2'");
-        $finish;
-     end
-
-		#1; 
-
-		$display("ReadData1 %d", ReadData1);
-		$display("ReadData2 %d", ReadData2);
-
-		$finish;
-
+		#20 $finish;
 	end
 
 endmodule
