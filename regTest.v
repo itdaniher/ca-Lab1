@@ -8,18 +8,21 @@ module main;
 
 	initial begin
 		in = 32'h55555555;
+		clk = 0;
 	end
+
 
 	always @ (negedge clk)
 	begin
+		$display("time - %d", $time); 
+		$display("in %b - out %b", in, out);
 		in = ~in;
-		$monitor("in %b - out %b", in, out);
 	end
 
 	always
 	begin
-		#1 clk = 0;
 		#1 clk = 1;
+		#1 clk = 0;
 	end
 
 	initial begin
