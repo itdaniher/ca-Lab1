@@ -29,7 +29,7 @@ module main;
 		$display("time - %d", $time);
 		$display("reg1 %d - %b", ReadRegister1, ReadData1);
 		$display("reg2 %d - %b", ReadRegister2, ReadData2);
-		$display("write %d - %b", WriteRegister, WriteData);
+		$display("wreg %d - %b", WriteRegister, WriteData);
 	end
 
 	always
