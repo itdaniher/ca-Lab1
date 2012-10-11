@@ -164,14 +164,11 @@ module regfile(ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, Wr
 	wire [31:0] regin0, regin1, regin2, regin3, regin4, regin5, regin6, regin7, regin8, regin9, regin10, regin11, regin12, regin13, regin14, regin15, regin16, regin17, regin18, regin19, regin20, regin21, regin22, regin23, regin24, regin25, regin26, regin27, regin28, regin29, regin30, regin31;
 
 	DECODER decwrite (decout, WriteRegister, 1'b1);
-	
  
 	// register reg0(regout0, (decout[0]&WriteData)|(~decout[0]&regout0), clock);
 	assign regout0 = 32'b0;
-	//assign regout2 = 32'b0;
-	assign regout2 = 32'b00000000000000000000000000000011;
 	register reg1(regout1, (decout[1]&WriteData)|(~decout[1]&regout1), clock);
-	//register reg2(regout2, (decout[2]&WriteData)|(~decout[2]&regout2), clock);
+	register reg2(regout2, (decout[2]&WriteData)|(~decout[2]&regout2), clock);
 	register reg3(regout3, (decout[3]&WriteData)|(~decout[3]&regout3), clock);
 	register reg4(regout4, (decout[4]&WriteData)|(~decout[4]&regout4), clock);
 	register reg5(regout5, (decout[5]&WriteData)|(~decout[5]&regout5), clock);
