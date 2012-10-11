@@ -60,40 +60,49 @@ module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11
 	output [31:0] out;
 	input [4:0] CTRL;
 	input [31:0] in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13, in14, in15, in16, in17, in18, in19, in20, in21, in22, in23, in24, in25, in26, in27, in28, in29, in30, in31;
-	
-	MUX mux0 (CTRL, in0, out[0]);
-	MUX mux1 (CTRL, in1, out[1]);
-	MUX mux2 (CTRL, in2, out[2]);
-	MUX mux3 (CTRL, in3, out[3]);
-	MUX mux4 (CTRL, in4, out[4]);
-	MUX mux5 (CTRL, in5, out[5]);
-	MUX mux6 (CTRL, in6, out[6]);
-	MUX mux7 (CTRL, in7, out[7]);
-	MUX mux8 (CTRL, in8, out[8]);
-	MUX mux9 (CTRL, in9, out[9]);
-	MUX mux10 (CTRL, in10, out[10]);
-	MUX mux11 (CTRL, in11, out[11]);
-	MUX mux12 (CTRL, in12, out[12]);
-	MUX mux13 (CTRL, in13, out[13]);
-	MUX mux14 (CTRL, in14, out[14]);
-	MUX mux15 (CTRL, in15, out[15]);
-	MUX mux16 (CTRL, in16, out[16]);
-	MUX mux17 (CTRL, in17, out[17]);
-	MUX mux18 (CTRL, in18, out[18]);
-	MUX mux19 (CTRL, in19, out[19]);
-	MUX mux20 (CTRL, in20, out[20]);
-	MUX mux21 (CTRL, in21, out[21]);
-	MUX mux22 (CTRL, in22, out[22]);
-	MUX mux23 (CTRL, in23, out[23]);
-	MUX mux24 (CTRL, in24, out[24]);
-	MUX mux25 (CTRL, in25, out[25]);
-	MUX mux26 (CTRL, in26, out[26]);
-	MUX mux27 (CTRL, in27, out[27]);
-	MUX mux28 (CTRL, in28, out[28]);
-	MUX mux29 (CTRL, in29, out[29]);
-	MUX mux30 (CTRL, in30, out[30]);
-	MUX mux31 (CTRL, in31, out[31]);
-	 
+
+	reg out;
+
+	always @ (CTRL)
+	begin
+		case (CTRL)
+			00 : out=in0;
+			01 : out=in1;
+			02 : out=in2;
+			03 : out=in3;
+			04 : out=in4;
+			05 : out=in5;
+			06 : out=in6;
+			07 : out=in7;
+			08 : out=in8;
+			09 : out=in9;
+			10 : out=in10;
+			11 : out=in11;
+			12 : out=in12;
+			13 : out=in13;
+			14 : out=in14;
+			15 : out=in15;
+			16 : out=in16;
+			17 : out=in17;
+			18 : out=in18;
+			19 : out=in19;
+			20 : out=in20;
+			21 : out=in21;
+			22 : out=in22;
+			23 : out=in23;
+			24 : out=in24;
+			25 : out=in25;
+			26 : out=in26;
+			27 : out=in27;
+			28 : out=in28;
+			29 : out=in29;
+			30 : out=in30;
+			31 : out=in31;
+			default : out=32'b0;
+		endcase
+	end
+
+ 
 endmodule
  
  
