@@ -3,40 +3,8 @@ module DECODER(OUT, IN, ENABLE);
 	output [31:0] OUT;
 	input [4:0] IN;
 	input ENABLE;
-	
-	and (OUT[0],ENABLE,(&(0^~IN)));
-	and (OUT[1],ENABLE,(&(1^~IN)));
-	and (OUT[2],ENABLE,(&(2^~IN)));
-	and (OUT[3],ENABLE,(&(3^~IN)));
-	and (OUT[4],ENABLE,(&(4^~IN)));
-	and (OUT[5],ENABLE,(&(5^~IN)));
-	and (OUT[6],ENABLE,(&(6^~IN)));
-	and (OUT[7],ENABLE,(&(7^~IN)));
-	and (OUT[8],ENABLE,(&(8^~IN)));
-	and (OUT[9],ENABLE,(&(9^~IN)));
-	and (OUT[10],ENABLE,(&(10^~IN)));
-	and (OUT[11],ENABLE,(&(11^~IN)));
-	and (OUT[12],ENABLE,(&(12^~IN)));
-	and (OUT[13],ENABLE,(&(13^~IN)));
-	and (OUT[14],ENABLE,(&(14^~IN)));
-	and (OUT[15],ENABLE,(&(15^~IN)));
-	and (OUT[16],ENABLE,(&(16^~IN)));
-	and (OUT[17],ENABLE,(&(17^~IN)));
-	and (OUT[18],ENABLE,(&(18^~IN)));
-	and (OUT[19],ENABLE,(&(19^~IN)));
-	and (OUT[20],ENABLE,(&(20^~IN)));
-	and (OUT[21],ENABLE,(&(21^~IN)));
-	and (OUT[22],ENABLE,(&(22^~IN)));
-	and (OUT[23],ENABLE,(&(23^~IN)));
-	and (OUT[24],ENABLE,(&(24^~IN)));
-	and (OUT[25],ENABLE,(&(25^~IN)));
-	and (OUT[26],ENABLE,(&(26^~IN)));
-	and (OUT[27],ENABLE,(&(27^~IN)));
-	and (OUT[28],ENABLE,(&(28^~IN)));
-	and (OUT[29],ENABLE,(&(29^~IN)));
-	and (OUT[30],ENABLE,(&(30^~IN)));
-	and (OUT[31],ENABLE,(&(31^~IN)));
- 
+
+	assign OUT = 1 << IN;
 endmodule
  
 module MUX(CTRL, IN, OUT);
@@ -232,7 +200,7 @@ module regfile(ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, Wr
 		endcase
 	end
 
-	BIGMUX bigmux1 (ReadRegister1, regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout16, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31, ReadData1);
+	BIGMUX bigmux1 (ReadRegister1, regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout15, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31, ReadData1);
 	BIGMUX bigmux2 (ReadRegister2, regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout16, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31, ReadData2);
 	
 endmodule
