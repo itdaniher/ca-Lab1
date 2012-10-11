@@ -159,46 +159,79 @@ module regfile(ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, Wr
 	input [31:0] WriteData;
 	output [31:0] ReadData1, ReadData2;
 
-	wire [31:0] decout;
 	wire [31:0] regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout16, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31;
-	wire [31:0] regin0, regin1, regin2, regin3, regin4, regin5, regin6, regin7, regin8, regin9, regin10, regin11, regin12, regin13, regin14, regin15, regin16, regin17, regin18, regin19, regin20, regin21, regin22, regin23, regin24, regin25, regin26, regin27, regin28, regin29, regin30, regin31;
+	reg [31:0] regin0, regin1, regin2, regin3, regin4, regin5, regin6, regin7, regin8, regin9, regin10, regin11, regin12, regin13, regin14, regin15, regin16, regin17, regin18, regin19, regin20, regin21, regin22, regin23, regin24, regin25, regin26, regin27, regin28, regin29, regin30, regin31;
 
-	DECODER decwrite (decout, WriteRegister, 1'b1);
- 
-	// register reg0(regout0, (decout[0]&WriteData)|(~decout[0]&regout0), clk);
 	assign regout0 = 32'b0;
-	register reg1(regout1, (decout[1]&WriteData)|(~decout[1]&regout1), clk);
-	register reg2(regout2, (decout[2]&WriteData)|(~decout[2]&regout2), clk);
-	register reg3(regout3, (decout[3]&WriteData)|(~decout[3]&regout3), clk);
-	register reg4(regout4, (decout[4]&WriteData)|(~decout[4]&regout4), clk);
-	register reg5(regout5, (decout[5]&WriteData)|(~decout[5]&regout5), clk);
-	register reg6(regout6, (decout[6]&WriteData)|(~decout[6]&regout6), clk);
-	register reg7(regout7, (decout[7]&WriteData)|(~decout[7]&regout7), clk);
-	register reg8(regout8, (decout[8]&WriteData)|(~decout[8]&regout8), clk);
-	register reg9(regout9, (decout[9]&WriteData)|(~decout[9]&regout9), clk);
-	register reg10(regout10, (decout[10]&WriteData)|(~decout[10]&regout10), clk);
-	register reg11(regout11, (decout[11]&WriteData)|(~decout[11]&regout11), clk);
-	register reg12(regout12, (decout[12]&WriteData)|(~decout[12]&regout12), clk);
-	register reg13(regout13, (decout[13]&WriteData)|(~decout[13]&regout13), clk);
-	register reg14(regout14, (decout[14]&WriteData)|(~decout[14]&regout14), clk);
-	register reg15(regout15, (decout[15]&WriteData)|(~decout[15]&regout15), clk);
-	register reg16(regout16, (decout[16]&WriteData)|(~decout[16]&regout16), clk);
-	register reg17(regout17, (decout[17]&WriteData)|(~decout[17]&regout17), clk);
-	register reg18(regout18, (decout[18]&WriteData)|(~decout[18]&regout18), clk);
-	register reg19(regout19, (decout[19]&WriteData)|(~decout[19]&regout19), clk);
-	register reg20(regout20, (decout[20]&WriteData)|(~decout[20]&regout20), clk);
-	register reg21(regout21, (decout[21]&WriteData)|(~decout[21]&regout21), clk);
-	register reg22(regout22, (decout[22]&WriteData)|(~decout[22]&regout22), clk);
-	register reg23(regout23, (decout[23]&WriteData)|(~decout[23]&regout23), clk);
-	register reg24(regout24, (decout[24]&WriteData)|(~decout[24]&regout24), clk);
-	register reg25(regout25, (decout[25]&WriteData)|(~decout[25]&regout25), clk);
-	register reg26(regout26, (decout[26]&WriteData)|(~decout[26]&regout26), clk);
-	register reg27(regout27, (decout[27]&WriteData)|(~decout[27]&regout27), clk);
-	register reg28(regout28, (decout[28]&WriteData)|(~decout[28]&regout28), clk);
-	register reg29(regout29, (decout[29]&WriteData)|(~decout[29]&regout29), clk);
-	register reg30(regout30, (decout[30]&WriteData)|(~decout[30]&regout30), clk);
-	register reg31(regout31, (decout[31]&WriteData)|(~decout[31]&regout31), clk);
- 
+	register reg1(regout1, regin1, clk);
+	register reg2(regout2, regin2, clk);
+	register reg3(regout3, regin3, clk);
+	register reg4(regout4, regin4, clk);
+	register reg5(regout5, regin5, clk);
+	register reg6(regout6, regin6, clk);
+	register reg7(regout7, regin7, clk);
+	register reg8(regout8, regin8, clk);
+	register reg9(regout9, regin9, clk);
+	register reg10(regout10, regin10, clk);
+	register reg11(regout11, regin11, clk);
+	register reg12(regout12, regin12, clk);
+	register reg13(regout13, regin13, clk);
+	register reg14(regout14, regin14, clk);
+	register reg15(regout15, regin15, clk);
+	register reg16(regout16, regin16, clk);
+	register reg17(regout17, regin17, clk);
+	register reg18(regout18, regin18, clk);
+	register reg19(regout19, regin19, clk);
+	register reg20(regout20, regin20, clk);
+	register reg21(regout21, regin21, clk);
+	register reg22(regout22, regin22, clk);
+	register reg23(regout23, regin23, clk);
+	register reg24(regout24, regin24, clk);
+	register reg25(regout25, regin25, clk);
+	register reg26(regout26, regin26, clk);
+	register reg27(regout27, regin27, clk);
+	register reg28(regout28, regin28, clk);
+	register reg29(regout29, regin29, clk);
+	register reg30(regout30, regin30, clk);
+	register reg31(regout31, regin31, clk);
+
+	always @ (posedge clk) begin
+		case (WriteRegister)
+			00 : regin1=WriteData;
+			01 : regin1=WriteData;
+			02 : regin2=WriteData;
+			03 : regin3=WriteData;
+			04 : regin4=WriteData;
+			05 : regin5=WriteData;
+			06 : regin6=WriteData;
+			07 : regin7=WriteData;
+			08 : regin8=WriteData;
+			09 : regin9=WriteData;
+			10 : regin10=WriteData;
+			11 : regin11=WriteData;
+			12 : regin12=WriteData;
+			13 : regin13=WriteData;
+			14 : regin14=WriteData;
+			15 : regin15=WriteData;
+			16 : regin16=WriteData;
+			17 : regin17=WriteData;
+			18 : regin18=WriteData;
+			19 : regin19=WriteData;
+			20 : regin20=WriteData;
+			21 : regin21=WriteData;
+			22 : regin22=WriteData;
+			23 : regin23=WriteData;
+			24 : regin24=WriteData;
+			25 : regin25=WriteData;
+			26 : regin26=WriteData;
+			27 : regin27=WriteData;
+			28 : regin28=WriteData;
+			29 : regin29=WriteData;
+			30 : regin30=WriteData;
+			31 : regin31=WriteData;
+		endcase
+	end
+
 	BIGMUX bigmux1 (ReadRegister1, regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout16, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31, ReadData1);
 	BIGMUX bigmux2 (ReadRegister2, regout0, regout1, regout2, regout3, regout4, regout5, regout6, regout7, regout8, regout9, regout10, regout11, regout12, regout13, regout14, regout15, regout16, regout17, regout18, regout19, regout20, regout21, regout22, regout23, regout24, regout25, regout26, regout27, regout28, regout29, regout30, regout31, ReadData2);
 	
