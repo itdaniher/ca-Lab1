@@ -34,8 +34,7 @@ module main;
 
 	always
 	begin
-		#1 clk = 1;
-		#1 clk = 0;
+		#1 clk = ~clk;
 	end
 
 	initial begin
