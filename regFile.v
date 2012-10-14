@@ -1,16 +1,16 @@
 module DECODER(OUT, IN, ENABLE);
  
-  output [31:0] OUT;
-  reg [31:0] OUT;
-  input [4:0] IN;
-  input ENABLE;
+	output [31:0] OUT;
+	reg OUT;
+	input [4:0] IN;
+	input ENABLE;
  
-  always @ (ENABLE) begin
-    case (ENABLE)
-      0 : OUT = 0;
-      1 : OUT = 1 << IN;
-    endcase
-  end
+	always @ (ENABLE) begin
+		case (ENABLE)
+			0 : OUT = 0;
+			1 : OUT = 1 << IN;
+		endcase
+	end
  
 endmodule
 
