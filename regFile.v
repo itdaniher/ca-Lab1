@@ -7,22 +7,6 @@ module DECODER(OUT, IN, ENABLE);
 	assign OUT = 1 << IN;
 endmodule
  
-module MUX(CTRL, IN, OUT);
-	output OUT;
- 
-	input [4:0] CTRL;
-	input [31:0] IN;
-
-	wire [31:0] DECOUT;
-						 
-	DECODER decoder (DECOUT, CTRL, 1'b1);
-
-	assign OUT = |(DECOUT&IN);
-
-endmodule
- 
- 
- 
 module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13, in14, in15, in16, in17, in18, in19, in20, in21, in22, in23, in24, in25, in26, in27, in28, in29, in30, in31, out);
  
 	output [31:0] out;
@@ -69,23 +53,27 @@ module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11
 		endcase
 	end
 
- 
 endmodule
  
  
 module D_FF (q, d, clk);
+
 	output q;
 	input d, clk;
 	reg q; 
+
 	always @(posedge clk) 
 	q = d;
+
 endmodule
  
  
 module register(OUT, IN, clk);
+
 	input [31:0] IN;
 	output [31:0] OUT;
 	input clk;
+
 	D_FF dff0 (OUT[0], IN[0], clk);
 	D_FF dff1 (OUT[1], IN[1], clk);
 	D_FF dff2 (OUT[2], IN[2], clk);
