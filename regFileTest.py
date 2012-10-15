@@ -19,5 +19,8 @@ for line in lines:
 			try:
 				assert registers[int(line[0][1])] == 32*'x'
 			except:
-				print line
-				print zip(range(32), registers)
+				print "FAIL"
+				print line[1]
+				print registers[int(line[0][1])]
+				quit()
+print "PASS"
