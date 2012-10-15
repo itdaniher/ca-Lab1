@@ -10,35 +10,30 @@ module main;
 	initial begin
 		clk = 0;
 		RegWrite = 1;
-		ReadRegister1 = 30;
-		ReadRegister2 = 30;
+		ReadRegister1 = 31;
+		ReadRegister2 = 31;
 		WriteRegister = 0;
-		WriteData = 32'h55555555;
+		WriteData = $random; 
 	end
 
 	always @ (negedge clk)
 	begin
-		WriteData = ~WriteData;
+		$display("%b - time %d", clk, $time);
+		$display("reg1 %d - %b", ReadRegister1, ReadData1);
+		$display("reg2 %d - %b", ReadRegister2, ReadData2);
+		$display("wreg %d - %b", WriteRegister, WriteData);
+		WriteData = $random; 
 		ReadRegister1 = ReadRegister1 + 1;
 		ReadRegister2 = ReadRegister2 + 1;
 		WriteRegister = WriteRegister + 1;
 	end
 
-	always @ (posedge clk)
-	begin
-		$display("time - %d", $time);
-		$display("reg1 %d - %b", ReadRegister1, ReadData1);
-		$display("reg2 %d - %b", ReadRegister2, ReadData2);
-		$display("wreg %d - %b", WriteRegister, WriteData);
-	end
 
-	always
-	begin
-		#1 clk = ~clk;
-	end
-
-	initial begin
-		#70 $finish;
+	initial begin	
+		repeat (66) begin	
+			#1 clk = ~clk;
+		end
+	$finish;
 	end
 
 endmodule

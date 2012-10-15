@@ -177,38 +177,38 @@ module regfile(ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, Wr
 
 	always @ (posedge clk) begin
 		case (WriteRegister)
-			00 : assign regin1=WriteData;
-			01 : assign regin1=WriteData;
-			02 : assign regin2=WriteData;
-			03 : assign regin3=WriteData;
-			04 : assign regin4=WriteData;
-			05 : assign regin5=WriteData;
-			06 : assign regin6=WriteData;
-			07 : assign regin7=WriteData;
-			08 : assign regin8=WriteData;
-			09 : assign regin9=WriteData;
-			10 : assign regin10=WriteData;
-			11 : assign regin11=WriteData;
-			12 : assign regin12=WriteData;
-			13 : assign regin13=WriteData;
-			14 : assign regin14=WriteData;
-			15 : assign regin15=WriteData;
-			16 : assign regin16=WriteData;
-			17 : assign regin17=WriteData;
-			18 : assign regin18=WriteData;
-			19 : assign regin19=WriteData;
-			20 : assign regin20=WriteData;
-			21 : assign regin21=WriteData;
-			22 : assign regin22=WriteData;
-			23 : assign regin23=WriteData;
-			24 : assign regin24=WriteData;
-			25 : assign regin25=WriteData;
-			26 : assign regin26=WriteData;
-			27 : assign regin27=WriteData;
-			28 : assign regin28=WriteData;
-			29 : assign regin29=WriteData;
-			30 : assign regin30=WriteData;
-			31 : assign regin31=WriteData;
+			00 : regin1=WriteData;
+			01 : regin1=WriteData;
+			02 : regin2=WriteData;
+			03 : regin3=WriteData;
+			04 : regin4=WriteData;
+			05 : regin5=WriteData;
+			06 : regin6=WriteData;
+			07 : regin7=WriteData;
+			08 : regin8=WriteData;
+			09 : regin9=WriteData;
+			10 : regin10=WriteData;
+			11 : regin11=WriteData;
+			12 : regin12=WriteData;
+			13 : regin13=WriteData;
+			14 : regin14=WriteData;
+			15 : regin15=WriteData;
+			16 : regin16=WriteData;
+			17 : regin17=WriteData;
+			18 : regin18=WriteData;
+			19 : regin19=WriteData;
+			20 : regin20=WriteData;
+			21 : regin21=WriteData;
+			22 : regin22=WriteData;
+			23 : regin23=WriteData;
+			24 : regin24=WriteData;
+			25 : regin25=WriteData;
+			26 : regin26=WriteData;
+			27 : regin27=WriteData;
+			28 : regin28=WriteData;
+			29 : regin29=WriteData;
+			30 : regin30=WriteData;
+			31 : regin31=WriteData;
 		endcase
 	end
 
