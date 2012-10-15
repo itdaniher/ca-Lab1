@@ -13,15 +13,15 @@ module main;
 
 	initial begin
 
-     if (! $value$plusargs("in5=%h", in5)) begin
-        $display("done goofed - need 'in5'");
-        $finish;
-     end
+	if (! $value$plusargs("in5=%h", in5)) begin
+		$display("done goofed - need 'in5'");
+		$finish;
+	end
 
-     if (! $value$plusargs("ctrl=%d", ctrl)) begin
-        $display("done goofed - need 'ctrl'");
-        $finish;
-     end
+	if (! $value$plusargs("ctrl=%d", ctrl)) begin
+		$display("done goofed - need 'ctrl'");
+		$finish;
+	end
 
 		#1; 
 
