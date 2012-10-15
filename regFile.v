@@ -1,62 +1,74 @@
 module DECODER(OUT, IN, ENABLE);
  
+	// 32b wide output port
 	output [31:0] OUT;
 	reg OUT;
+
+	// 5b wide input port
 	input [4:0] IN;
+
+	// enable
 	input ENABLE;
- 
+
+	// when ENABLE is set 
 	always @ (ENABLE) begin
 		case (ENABLE)
-			0 : OUT = 0;
-			1 : OUT = 1 << IN;
+			0 : assign OUT = 32'b0; // if enable is 0, output is 0
+			1 : assign OUT = 1 << IN; // if enable is 1, output is 1 shifted by "IN"
 		endcase
 	end
  
 endmodule
 
 module BIGMUX(CTRL, in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13, in14, in15, in16, in17, in18, in19, in20, in21, in22, in23, in24, in25, in26, in27, in28, in29, in30, in31, out);
- 
+
+	// 32b wide output bus
 	output [31:0] out;
+	// 5b wide ctrl bus
 	input [4:0] CTRL;
+	// 32x 32b wide input buses
 	input [31:0] in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13, in14, in15, in16, in17, in18, in19, in20, in21, in22, in23, in24, in25, in26, in27, in28, in29, in30, in31;
 
+	// set 'out' to be an assignable variable
 	reg out;
 
+	// when CTRL is set
 	always @ (CTRL) begin
 		case (CTRL)
-			00 : out=in0;
-			01 : out=in1;
-			02 : out=in2;
-			03 : out=in3;
-			04 : out=in4;
-			05 : out=in5;
-			06 : out=in6;
-			07 : out=in7;
-			08 : out=in8;
-			09 : out=in9;
-			10 : out=in10;
-			11 : out=in11;
-			12 : out=in12;
-			13 : out=in13;
-			14 : out=in14;
-			15 : out=in15;
-			16 : out=in16;
-			17 : out=in17;
-			18 : out=in18;
-			19 : out=in19;
-			20 : out=in20;
-			21 : out=in21;
-			22 : out=in22;
-			23 : out=in23;
-			24 : out=in24;
-			25 : out=in25;
-			26 : out=in26;
-			27 : out=in27;
-			28 : out=in28;
-			29 : out=in29;
-			30 : out=in30;
-			31 : out=in31;
-			default : out=32'b0;
+			// if CTRL is x, continuously assign out to inx 
+			00 : assign out=in0;
+			01 : assign out=in1;
+			02 : assign out=in2;
+			03 : assign out=in3;
+			04 : assign out=in4;
+			05 : assign out=in5;
+			06 : assign out=in6;
+			07 : assign out=in7;
+			08 : assign out=in8;
+			09 : assign out=in9;
+			10 : assign out=in10;
+			11 : assign out=in11;
+			12 : assign out=in12;
+			13 : assign out=in13;
+			14 : assign out=in14;
+			15 : assign out=in15;
+			16 : assign out=in16;
+			17 : assign out=in17;
+			18 : assign out=in18;
+			19 : assign out=in19;
+			20 : assign out=in20;
+			21 : assign out=in21;
+			22 : assign out=in22;
+			23 : assign out=in23;
+			24 : assign out=in24;
+			25 : assign out=in25;
+			26 : assign out=in26;
+			27 : assign out=in27;
+			28 : assign out=in28;
+			29 : assign out=in29;
+			30 : assign out=in30;
+			31 : assign out=in31;
+			default : assign out=32'b0;
 		endcase
 	end
 
@@ -65,11 +77,16 @@ endmodule
  
 module D_FF (q, d, clk);
 
+	// 1b outputs and inputs
 	output q;
 	input d, clk;
+
+	// q is an assignable	
 	reg q; 
 
+	// at the positive edge of 'clk'
 	always @(posedge clk) 
+	// q gets d
 	q = d;
 
 endmodule
@@ -160,38 +177,38 @@ module regfile(ReadData1, ReadData2, WriteData, ReadRegister1, ReadRegister2, Wr
 
 	always @ (posedge clk) begin
 		case (WriteRegister)
-			00 : regin1=WriteData;
-			01 : regin1=WriteData;
-			02 : regin2=WriteData;
-			03 : regin3=WriteData;
-			04 : regin4=WriteData;
-			05 : regin5=WriteData;
-			06 : regin6=WriteData;
-			07 : regin7=WriteData;
-			08 : regin8=WriteData;
-			09 : regin9=WriteData;
-			10 : regin10=WriteData;
-			11 : regin11=WriteData;
-			12 : regin12=WriteData;
-			13 : regin13=WriteData;
-			14 : regin14=WriteData;
-			15 : regin15=WriteData;
-			16 : regin16=WriteData;
-			17 : regin17=WriteData;
-			18 : regin18=WriteData;
-			19 : regin19=WriteData;
-			20 : regin20=WriteData;
-			21 : regin21=WriteData;
-			22 : regin22=WriteData;
-			23 : regin23=WriteData;
-			24 : regin24=WriteData;
-			25 : regin25=WriteData;
-			26 : regin26=WriteData;
-			27 : regin27=WriteData;
-			28 : regin28=WriteData;
-			29 : regin29=WriteData;
-			30 : regin30=WriteData;
-			31 : regin31=WriteData;
+			00 : assign regin1=WriteData;
+			01 : assign regin1=WriteData;
+			02 : assign regin2=WriteData;
+			03 : assign regin3=WriteData;
+			04 : assign regin4=WriteData;
+			05 : assign regin5=WriteData;
+			06 : assign regin6=WriteData;
+			07 : assign regin7=WriteData;
+			08 : assign regin8=WriteData;
+			09 : assign regin9=WriteData;
+			10 : assign regin10=WriteData;
+			11 : assign regin11=WriteData;
+			12 : assign regin12=WriteData;
+			13 : assign regin13=WriteData;
+			14 : assign regin14=WriteData;
+			15 : assign regin15=WriteData;
+			16 : assign regin16=WriteData;
+			17 : assign regin17=WriteData;
+			18 : assign regin18=WriteData;
+			19 : assign regin19=WriteData;
+			20 : assign regin20=WriteData;
+			21 : assign regin21=WriteData;
+			22 : assign regin22=WriteData;
+			23 : assign regin23=WriteData;
+			24 : assign regin24=WriteData;
+			25 : assign regin25=WriteData;
+			26 : assign regin26=WriteData;
+			27 : assign regin27=WriteData;
+			28 : assign regin28=WriteData;
+			29 : assign regin29=WriteData;
+			30 : assign regin30=WriteData;
+			31 : assign regin31=WriteData;
 		endcase
 	end
 
