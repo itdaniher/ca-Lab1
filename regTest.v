@@ -14,18 +14,17 @@ module main;
 
 	always @ (negedge clk)
 	begin
-		$display("time - %d", $time); 
-		$display("in %b - out %b", in, out);
 		in = ~in;
 	end
 
-	always
+	initial
 	begin
-		#1 clk = ~clk;
-	end
-
-	initial begin
-		#10 $finish;
+		repeat (4)
+		begin
+			#1 clk = ~clk;
+			$display("time - %d", $time); 
+			$display("in %b - out %b", in, out);
+		end
 	end
 
 endmodule
